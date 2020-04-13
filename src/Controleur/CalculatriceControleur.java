@@ -1,8 +1,6 @@
 package Controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
-
 import javax.swing.JOptionPane;
 
 import Modele.CalculatriceModele;
@@ -46,10 +44,7 @@ public class CalculatriceControleur {
 
 			int premierNombre = laVue.getPremierNombre();
 			int deuxiemeNombre = laVue.getDeuxiemeNombre();  
-			
-			int resultatAddition = leModele.getSommeAddition();
-			int resultatSoustraction = leModele.getSommeSoustraction();
-			
+
 				//condition qui va faire une addition ou une soustraction 
 				//en fonction de l'opérateur selectionné
 				
@@ -60,10 +55,9 @@ public class CalculatriceControleur {
 				//condition qui va vérifier si le résultat de l'addition  
 				// est égal au résultat proposé par l'élève et afficher Bon ou Mauvais
 				
-				if (resultatAddition == laVue.getResultatPropose() && resultatAddition <= 10){
+				if (leModele.getSommeAddition() == laVue.getResultatPropose() && leModele.getSommeAddition() <= 10){
 						
 						laVue.setAffichageBonMauvais(" Le résultat choisit est BON! Félicitation!!");
-						laVue.setAffichageResultatNettoyage();
 						
 						// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
 						
@@ -79,7 +73,7 @@ public class CalculatriceControleur {
 				        	System.exit(0);
 				        }
 						
-				} else if (resultatAddition != laVue.getResultatPropose() && resultatAddition <= 10){
+				} else if (leModele.getSommeAddition() != laVue.getResultatPropose() && leModele.getSommeAddition() <= 10){
 		
 						laVue.setAffichageBonMauvais(" Le résultat choisit est MAUVAIS! Ré-essaye!");
 						conteneurErreur = conteneurErreur + 1;
@@ -91,7 +85,7 @@ public class CalculatriceControleur {
 							
 							conteneurErreur = 0;
 							laVue.setAffichageBonMauvais(" Tu as échoué 3 fois! Le résultat était: ");
-							laVue.setAffichageResultat(resultatAddition);
+							laVue.setAffichageResultat(leModele.getSommeAddition());
 							
 							// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
 							
@@ -115,10 +109,9 @@ public class CalculatriceControleur {
 					//condition qui va vérifier si le résultat de la soustraction  
 					// est égal au résultat proposé par l'élève et afficher Bon ou Mauvais
 					
-					if (resultatSoustraction == laVue.getResultatPropose() && resultatSoustraction >= 0){
+					if (leModele.getSommeSoustraction() == laVue.getResultatPropose() && leModele.getSommeSoustraction() >= 0){
 
 							laVue.setAffichageBonMauvais(" Le résultat choisit est BON! Félicitation!");
-							laVue.setAffichageResultatNettoyage();
 							
 							// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
 							
@@ -134,7 +127,7 @@ public class CalculatriceControleur {
 					        	System.exit(0);
 					        }
 							
-					} else if (resultatSoustraction != laVue.getResultatPropose() && resultatSoustraction >= 0){
+					} else if (leModele.getSommeSoustraction() != laVue.getResultatPropose() && leModele.getSommeSoustraction() >= 0){
 		
 							laVue.setAffichageBonMauvais(" Le résultat choisit est MAUVAIS! Ré-essaye!");
 				
@@ -144,7 +137,7 @@ public class CalculatriceControleur {
 						if (conteneurErreur == 3){
 							conteneurErreur = 0;
 							laVue.setAffichageBonMauvais(" Tu as échoué 3 fois! Le résultat était: ");
-							laVue.setAffichageResultat(resultatSoustraction);	
+							laVue.setAffichageResultat(leModele.getSommeSoustraction());	
 							
 							// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
 							
@@ -164,9 +157,10 @@ public class CalculatriceControleur {
 				}
 			// condition qui va afficher un msg d'erreur si les résultats de l'opération sont > 10 ou < 0
 			
-			if (resultatAddition > 10 || resultatSoustraction < 0) {
+			if (leModele.getSommeAddition() > 10 || leModele.getSommeSoustraction() < 0) {
 			
 				laVue.affichageMsgErreur("Le résultat ne doit pas dépasser 10 ou descendre en dessous de 0! Choisis une autre opération!");
+				laVue.setAffichageBonMauvais("Choisis une autre opération!!");
 				laVue.setAffichageResultatNettoyage();
 			}
 

@@ -8,7 +8,6 @@ import javax.swing.*;
 
 public class CalculatriceVue extends JFrame{
 	
-	private JLabel guidePhrase = new JLabel("Choisis ton opération avec l'aide des listes: ");
 	private JComboBox<Integer> premierNombre  = new JComboBox<Integer>();
 	private JComboBox<String> operateurs = new JComboBox<String>();
 	private JComboBox<Integer> deuxiemeNombre = new JComboBox<Integer>();
@@ -27,7 +26,7 @@ public class CalculatriceVue extends JFrame{
 		JPanel fenetreCalcul = new JPanel();
 		
 		this.setTitle("EditCALC V2 - par Kalvin ELIAZORD");
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); // plein écran par défaut 
 		
 		// Affectation des valeurs des listes de JCombobox
@@ -45,7 +44,6 @@ public class CalculatriceVue extends JFrame{
 		
 		// ajout des objets graphiques de l'ihm calculatrice dans le conteneur
 		
-		fenetreCalcul.add(guidePhrase);
 		fenetreCalcul.add(premierNombre);
 		fenetreCalcul.add(operateurs);
 		fenetreCalcul.add(deuxiemeNombre);
@@ -84,22 +82,20 @@ public class CalculatriceVue extends JFrame{
 
 	// affiche le résultat du calcul dans le label Resultat
 	
-	public void setAffichageBonMauvais(String BonOuMauvais){
+	public void setAffichageBonMauvais(String bonOuMauvais){
 
-		affichageBonMauvais.setText(BonOuMauvais);
+		affichageBonMauvais.setText(bonOuMauvais);
 
 	}
 	
 	public void setAffichageResultat(int resultatOperation){
 
-		affichageResultat.setText(Integer.toString(resultatOperation));
-		
+		affichageResultat.setText(Integer.toString(resultatOperation));	
 	}
 
 	public void setAffichageResultatNettoyage(){
 
-		affichageResultat.setText(" ");
-		
+		affichageResultat.setText(" ");	
 	}
 	
 	// méthode qui ajoute une action de type event à un boutton 
@@ -116,6 +112,5 @@ public class CalculatriceVue extends JFrame{
 
 		JOptionPane.showMessageDialog(this, messageErreur);
 
-	}
-	
+	}	
 }
