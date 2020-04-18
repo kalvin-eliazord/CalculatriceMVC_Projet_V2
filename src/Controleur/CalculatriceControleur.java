@@ -60,7 +60,6 @@ public class CalculatriceControleur {
 						laVue.setAffichageBonMauvais(" Le résultat choisit est BON! Félicitation!!");
 						
 						// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
-						
 						 int choix = JOptionPane.showConfirmDialog(null,
 				                "Voulez vous arrêter ? ",
 				                "Cliquez sur YES pour arrêter l'application", JOptionPane.YES_OPTION,
@@ -82,13 +81,11 @@ public class CalculatriceControleur {
 						if (conteneurErreur == 3){
 							
 							// réinitialisation du conteneur 
-							
 							conteneurErreur = 0;
 							laVue.setAffichageBonMauvais(" Tu as échoué 3 fois! Le résultat était: ");
 							laVue.setAffichageResultat(leModele.getSommeAddition());
 							
 							// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
-							
 							 int choix = JOptionPane.showConfirmDialog(null,
 					                "Voulez vous arrêter ? ",
 					                "Cliquez sur YES pour arrêter l'application", JOptionPane.YES_OPTION,
@@ -102,6 +99,7 @@ public class CalculatriceControleur {
 					        }
 						}
 					}
+				
 				} else {			
 
 						leModele.soustraction(premierNombre, deuxiemeNombre);
@@ -114,7 +112,6 @@ public class CalculatriceControleur {
 							laVue.setAffichageBonMauvais(" Le résultat choisit est BON! Félicitation!");
 							
 							// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
-							
 							 int choix = JOptionPane.showConfirmDialog(null,
 					                "Voulez vous arrêter ? ",
 					                "Cliquez sur YES pour arrêter l'application", JOptionPane.YES_OPTION,
@@ -140,7 +137,6 @@ public class CalculatriceControleur {
 							laVue.setAffichageResultat(leModele.getSommeSoustraction());	
 							
 							// boite de dialogue qui affichera la pub pendant 5s si l'utilisteur ferme le programme
-							
 							 int choix = JOptionPane.showConfirmDialog(null,
 					                "Voulez vous arrêter ? ",
 					                "Cliquez sur YES pour arrêter l'application", JOptionPane.YES_OPTION,
@@ -155,17 +151,14 @@ public class CalculatriceControleur {
 						}
 					}			
 				}
-			// condition qui va afficher un msg d'erreur si les résultats de l'opération sont > 10 ou < 0
 			
-			if (leModele.getSommeAddition() > 10 || leModele.getSommeSoustraction() < 0) {
+			// condition qui va afficher un msg d'erreur si les résultats de l'opération sont > 10 ou < 0
+			if (leModele.getSommeAddition() > 10 || leModele.getSommeSoustraction() < -0) {
 			
 				laVue.affichageMsgErreur("Le résultat ne doit pas dépasser 10 ou descendre en dessous de 0! Choisis une autre opération!");
 				laVue.setAffichageBonMauvais("Choisis une autre opération!!");
 				laVue.setAffichageResultatNettoyage();
 			}
-
-
 		}
-	}
-		
+	}		
 }

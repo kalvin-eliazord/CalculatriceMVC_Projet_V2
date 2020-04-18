@@ -1,11 +1,10 @@
  package Vue;
  
-// la seule fonctionnalité de la vue est d'afficher 
-// ce que l'utilisateur va voir, aucun calculs ne sera fait
-
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+//la seule fonctionnalité de la vue est d'afficher 
+//ce que l'utilisateur va voir, aucun calculs ne sera fait
 public class CalculatriceVue extends JFrame{
 	
 	private JComboBox<Integer> premierNombre  = new JComboBox<Integer>();
@@ -26,7 +25,7 @@ public class CalculatriceVue extends JFrame{
 		JPanel fenetreCalcul = new JPanel();
 		
 		this.setTitle("EditCALC V2 - par Kalvin ELIAZORD");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); // plein écran par défaut 
 		
 		// Affectation des valeurs des listes de JCombobox
@@ -54,7 +53,6 @@ public class CalculatriceVue extends JFrame{
 		fenetreCalcul.add(affichageResultat);
 		
 		this.add(fenetreCalcul);
-	
 	}
 
 	// les getter retourne la valeur de l'index sélectionné dans le JCombobox
@@ -85,7 +83,6 @@ public class CalculatriceVue extends JFrame{
 	public void setAffichageBonMauvais(String bonOuMauvais){
 
 		affichageBonMauvais.setText(bonOuMauvais);
-
 	}
 	
 	public void setAffichageResultat(int resultatOperation){
@@ -103,7 +100,6 @@ public class CalculatriceVue extends JFrame{
 	public void recepteurBouttonVerification(ActionListener recepteurBoutonVerif){
 
 		bouttonVerification.addActionListener(recepteurBoutonVerif);
-
 	}
 
 	// Ouvre une fenêtre qui va alerter le msg d'erreur
@@ -111,6 +107,5 @@ public class CalculatriceVue extends JFrame{
 	public void affichageMsgErreur(String messageErreur){
 
 		JOptionPane.showMessageDialog(this, messageErreur);
-
 	}	
 }

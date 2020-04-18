@@ -13,7 +13,7 @@ import Modele.CalculatriceModele;
 
 public class CalculatricePub extends JFrame{
 	
-	private JLabel affichagePub = new JLabel("PUBLICITE : Venez mangez chez Mcdo !!");
+	private JLabel affichagePub = new JLabel("PUBLICITE : Venez manger chez Mcdo !!");
 	private JPanel fenetrePub = new JPanel();
 	
 	public CalculatricePub() {
