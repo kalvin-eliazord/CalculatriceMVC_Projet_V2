@@ -1,12 +1,16 @@
- package Vue;
- 
+package Vue;
+
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 //la seule fonctionnalité de la vue est d'afficher 
 //ce que l'utilisateur va voir, aucun calculs ne sera fait
 public class CalculatriceVue extends JFrame{
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JComboBox<Integer> premierNombre  = new JComboBox<Integer>();
 	private JComboBox<String> operateurs = new JComboBox<String>();
 	private JComboBox<Integer> deuxiemeNombre = new JComboBox<Integer>();
@@ -15,34 +19,30 @@ public class CalculatriceVue extends JFrame{
 	private JButton bouttonVerification = new JButton("Vérifier le Résultat");
 	private JLabel affichageBonMauvais = new JLabel(" ");
 	private JLabel affichageResultat = new JLabel();
-	
+
 	//constructeur de la classe CalculatriceVue
-	
+
 	public CalculatriceVue(){
-		
+
 		// ihm paramètres
-      
 		JPanel fenetreCalcul = new JPanel();
-		
-		this.setTitle("EditCALC V2 - par Kalvin ELIAZORD");
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH); // plein écran par défaut 
-		
+
+		setTitle("EditCALC V2 - par Kalvin ELIAZORD");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // plein écran par défaut 
+
 		// Affectation des valeurs des listes de JCombobox
-		
 		Integer[] listeNombre = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-		 String[] listeOperateur = new String[] {"+", "-"};
-		
+		String[] listeOperateur = new String[] {"+", "-"};
+
 		// affectation des JCombobox qui possède une liste à une variable 
 		// pour pouvoir l'ajouter à la fenetreCalcul 
-		 
 		premierNombre = new JComboBox<Integer>(listeNombre);
 		operateurs = new JComboBox<String>(listeOperateur);
 		deuxiemeNombre = new JComboBox<Integer>(listeNombre);
 		resultatPropose = new JComboBox<Integer>(listeNombre);
-		
+
 		// ajout des objets graphiques de l'ihm calculatrice dans le conteneur
-		
 		fenetreCalcul.add(premierNombre);
 		fenetreCalcul.add(operateurs);
 		fenetreCalcul.add(deuxiemeNombre);
@@ -51,61 +51,59 @@ public class CalculatriceVue extends JFrame{
 		fenetreCalcul.add(bouttonVerification);
 		fenetreCalcul.add(affichageBonMauvais);
 		fenetreCalcul.add(affichageResultat);
-		
+
 		this.add(fenetreCalcul);
 	}
 
-	// les getter retourne la valeur de l'index sélectionné dans le JCombobox
-	
+	// les getter
 	public int getPremierNombre(){ 
-		
 		return (int) premierNombre.getSelectedItem();
 	}
 
 	public int getDeuxiemeNombre(){
-		
 		return (int) deuxiemeNombre.getSelectedItem();
 	}
-	
-	public String getOperateurs() {
-		
+
+	public String getStringOperateurs() {
 		return (String) operateurs.getSelectedItem();
 	}
 
 	public int getResultatPropose() {
-		
 		return (int) resultatPropose.getSelectedItem();
 	}
-	
 
 	// affiche le résultat du calcul dans le label Resultat
-	
 	public void setAffichageBonMauvais(String bonOuMauvais){
-
 		affichageBonMauvais.setText(bonOuMauvais);
 	}
-	
-	public void setAffichageResultat(int resultatOperation){
 
+	public void setAffichageResultat(int resultatOperation){
 		affichageResultat.setText(Integer.toString(resultatOperation));	
 	}
 
 	public void setAffichageResultatNettoyage(){
-
 		affichageResultat.setText(" ");	
 	}
-	
-	// méthode qui ajoute une action de type event à un boutton 
-	
-	public void recepteurBouttonVerification(ActionListener recepteurBoutonVerif){
 
-		bouttonVerification.addActionListener(recepteurBoutonVerif);
+	// méthode qui ajoute une action de type actionlistener 
+	public void BtnListener(ActionListener event){
+		bouttonVerification.addActionListener(event);
+	}
+	
+	public void ComboListener(ActionListener event){
+		premierNombre.addActionListener(event);
+		operateurs.addActionListener(event);
 	}
 
-	// Ouvre une fenêtre qui va alerter le msg d'erreur
+	public JComboBox<String> getOperateurs() {
+		return operateurs;
+	}
 
-	public void affichageMsgErreur(String messageErreur){
+	public JComboBox<Integer> getComboDeux() {
+		return deuxiemeNombre;
+	}
 
-		JOptionPane.showMessageDialog(this, messageErreur);
+	public JComboBox<Integer> getComboUn() {
+		return premierNombre;
 	}	
 }
